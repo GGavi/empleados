@@ -9,11 +9,11 @@ if ($_SESSION['manager'] == true) {
     echo "<body>";
     echo "<form name='formulario' method='post' action='consultaDepManager.php'>";
     echo "<select name='empleado'>";
-    $selectEmpleado = "SELECT emp_no, first_name FROM employees LIMIT 200;";
+    $selectEmpleado = "SELECT emp_no, first_name, last_name FROM employees ORDER BY emp_no LIMIT 2000;";
     $queryEmpleado = mysqli_query($db, $selectEmpleado);
     while ($arrayEmpleados = mysqli_fetch_array($queryEmpleado, MYSQLI_ASSOC)) {
 					
-        echo "<option value='".$arrayEmpleados['emp_no']."'>".$arrayEmpleados['first_name']."</option>";
+        echo "<option value='".$arrayEmpleados['emp_no']."'>".$arrayEmpleados['first_name'].' '.$arrayEmpleados['last_name']."</option>";
     }
     
     echo "</select><br><br>";

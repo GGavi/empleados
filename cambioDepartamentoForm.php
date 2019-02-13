@@ -11,15 +11,15 @@
 		<h1>CAMBIO DE DEPARTAMENTO</h1>
 		<form name="mi_formulario" action="cambioDepartamento.php" method="post">
 		
-		Selecciona el numero de empleado que quieres cambiar de departamento: <select name="numeroEmpleado">
+		Selecciona el empleado que quieres cambiar de departamento: <select name="numeroEmpleado">
 			
 			<?php
 				
-				$selectEmpleado = "SELECT emp_no, first_name FROM employees LIMIT 200;";
+				$selectEmpleado = "SELECT emp_no, first_name, last_name FROM employees ORDER BY emp_no LIMIT 2000;";
 				$queryEmpleado = mysqli_query($db, $selectEmpleado);
 				while ($arrayEmpleados = mysqli_fetch_array($queryEmpleado, MYSQLI_ASSOC)) {
 					
-					echo "<option value='".$arrayEmpleados['emp_no']."'>".$arrayEmpleados['first_name']."</option>";
+					echo "<option value='".$arrayEmpleados['emp_no']."'>".$arrayEmpleados['first_name'].' '.$arrayEmpleados['last_name']."</option>";
 				}
 			?>
 		</select><br><br>
